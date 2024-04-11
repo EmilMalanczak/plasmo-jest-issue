@@ -9,6 +9,7 @@ const tsconfig = require("./tsconfig.json")
  */
 
 const config = {
+  transformIgnorePatterns: [],
   setupFiles: ["jest-webextension-mock"],
   extensionsToTreatAsEsm: [".ts", ".tsx"],
   testRegex: ["^.+\\.test.tsx?$"],
@@ -24,15 +25,8 @@ const config = {
         useESM: true
       }
     ],
-    "^.+\\.tsx$": [
-      "ts-jest",
-      {
-        useESM: true,
-        tsconfig: {
-          jsx: "react-jsx"
-        }
-      }
-    ]
+    "^.+\\.tsx$": ["ts-jest", { useESM: true, tsconfig: { jsx: "react-jsx" } }],
+    "^.+\\.js?$": "babel-jest"
   }
 }
 
